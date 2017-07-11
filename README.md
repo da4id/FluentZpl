@@ -18,7 +18,7 @@ The ZplLabel.Load() method takes an array of IFieldGenerator objects as paramete
 <h2>Positions in milimeter instead of Pixel</h2>
 <pre>
 var dpi = new DPIHelper(600);
-FieldGenFactory.GetText().At(dpi,10, 20).SetFont(Fonts.DatumFont, FieldOrientation.Normal, Fontsizes.DatumFontSize).WithData("Testlabel")
+FieldGenFactory.GetText().At(dpi,10, 20).SetFont(ZplFonts.ZERO, FieldOrientation.Normal, 50).WithData("Testlabel")
 </pre>
 If you want to provide your Labelpositions in milimeter instead of Pixel you can user the ZplLabels.Utilities.DPIHelper class. First you need to create an DPIHelper Object with dpi value from your printer. Now you can use the At() methods with the DPIHelper object and the x and y positions in milimeters
 
