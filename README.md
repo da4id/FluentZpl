@@ -41,13 +41,13 @@ There are some other modes avialable. Feel free to add these to the library
 <pre>var _label = new ZplLabel();
 var label = _label.Load(    
   FieldGenFactory.GetBarcode().SetBarcodeType(BarcodeType.DataMatrix).printTextLabel(false).Height(14).WithData("UI123456789").At(827, 307),    
-  FieldGenFactory.GetText().At(850, 24).SetFont("D", FieldOrientation.Normal, 40).WithData("Testlabel"),    
-  FieldGenFactory.GetText().At(71, 118).SetFont("0", FieldOrientation.Normal, 50).WithData("Testlabel Testlabel Testlabel"),    
-  FieldGenFactory.GetText().At(47, 614).SetFont("0", FieldOrientation.Normal, 70).WithData("UID: Testlabel"),    
-  FieldGenFactory.GetText().At(47, 496).SetFont("0", FieldOrientation.Normal, 60).WithData("Reel: Testlabel"),    
-  FieldGenFactory.GetText().At(47, 378).SetFont("0", FieldOrientation.Normal, 60).WithData("MSL: Testlabel"),    
-  FieldGenFactory.GetText().At(47, 260).SetFont("0", FieldOrientation.Normal, 60).WithData("Menge: Testlabel"),    
-  FieldGenFactory.GetText().At(71, 24).SetFont("0", FieldOrientation.Normal, 70).WithData("SAP: Testlabel")    
+  FieldGenFactory.GetText().At(850, 24).SetFont(ZplFonts.D, FieldOrientation.Normal, 40).WithData("Testlabel"),    
+  FieldGenFactory.GetText().At(71, 118).SetFont(ZplFonts.ZERO, FieldOrientation.Normal, 50).WithData("Testlabel Testlabel Testlabel"),    
+  FieldGenFactory.GetText().At(47, 614).SetFont(ZplFonts.ZERO, FieldOrientation.Normal, 70).WithData("UID: Testlabel"),    
+  FieldGenFactory.GetText().At(47, 496).SetFont(ZplFonts.ZERO, FieldOrientation.Normal, 60).WithData("Reel: Testlabel"),    
+  FieldGenFactory.GetText().At(47, 378).SetFont(ZplFonts.ZERO, FieldOrientation.Normal, 60).WithData("MSL: Testlabel"),    
+  FieldGenFactory.GetText().At(47, 260).SetFont(ZplFonts.ZERO, FieldOrientation.Normal, 60).WithData("Menge: Testlabel"),    
+  FieldGenFactory.GetText().At(71, 24).SetFont(ZplFonts.ZERO, FieldOrientation.Normal, 70).WithData("SAP: Testlabel")    
 ).At(0, 0).customZPLCommand("^FO100,100^ADN,80^FDCustomZPL^FS").CutOffset(0).Mode(PrintMode.cut);
 
 var zplCode = label.ToString();
