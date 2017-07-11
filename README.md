@@ -15,6 +15,13 @@ The ZplLabel.Load() method takes an array of IFieldGenerator objects as paramete
 <pre>
  FieldGenFactory.GetBarcode().At(1, 550).SetBarcodeType(BarcodeType.Code128).SetFont("D", FieldOrientation.Normal, 40).WithData("1").Height(70).BarWidth(2).Centered(1200) </pre>
 
+<h2>Positions in milimeter instead of Pixel</h2>
+<pre>
+var dpi = new DPIHelper(600);
+FieldGenFactory.GetText().At(dpi,10, 20).SetFont(Fonts.DatumFont, FieldOrientation.Normal, Fontsizes.DatumFontSize).WithData("Testlabel")
+</pre>
+If you want to provide your Labelpositions in milimeter instead of Pixel you can user the ZplLabels.Utilities.DPIHelper class. First you need to create an DPIHelper Object with dpi value from your printer. Now you can use the At() methods with the DPIHelper object and the x and y positions in milimeters
+
 <h2>Add your own ZPL Code to Label</h2>
 <pre>label.customZPLCommand("^FO100,100^ADN,80^FDCustomZPL^FS")</pre>
 Adds the Text CustomZPL to your Label. This function is useful to add your Company Logo as ZPL Code
@@ -48,3 +55,13 @@ var zplCode = label.ToString();
                 
 The "ToString()" method returns the ZPL Code as String
 
+<h2>Networkprinter</h2>
+<pre>
+var result = (new PrinterConnection()).Print(labelZPLContent, printername);
+if (result != "OK")
+{
+    logger.Error(result);
+    MessageBox.Show(result);
+}
+</pre>
+You can either provide the IP Adress or the printername if you use dns Server
