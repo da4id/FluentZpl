@@ -1,6 +1,8 @@
 FluentZpl
 =========
 
+This is an improved version of the original Version from agglerithm.
+
 <h2>A fluent interface to build labels using ZPL</h2>
 
 FluentZpl consists of an assembly called ZplLabels that allows creation and printing of Zebra labels through a fluent interface. The ZplLabel class enables creation of label scripts through its Load() method, and either PrinterConnection or LabelPrinter can be used to send the resulting script to a Zebra printer.
