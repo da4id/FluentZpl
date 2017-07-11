@@ -11,6 +11,7 @@ namespace ZplLabels.ZPL
         private int _customCutOffset;
         private string _customZPL = "";
         private double? _darkness = null;
+        private int _length = 0;
         private PrintMode _mode = PrintMode.tearOff;
 
         public ZplLabel()
@@ -38,7 +39,7 @@ namespace ZplLabels.ZPL
         /// <returns></returns>
         public override string ToString()
         {
-            return getHeader() + getDarkness() + getHome() + _customZPL + _script + getFooter();
+            return getHeader() + getLength() + getDarkness() + getHome() + _customZPL + _script + getFooter();
         }
 
         private string getHome()
@@ -81,6 +82,18 @@ namespace ZplLabels.ZPL
         public ZplLabel CutOffset(int offset)
         {
             _customCutOffset = offset;
+            return this;
+        }
+
+        public ZplLabel Length(int length)
+        {
+            _length = length;
+            return this;
+        }
+
+        public ZplLabel Length(ZplLabels.Utilities.DPIHelper dpiHelper, double length)
+        {
+            _length = dpiHelper.mmToPx(length);
             return this;
         }
 
@@ -168,6 +181,15 @@ namespace ZplLabels.ZPL
             }
 
             return "~SD"+ Math.Round((double)_darkness,1).ToString("00.0");
+        }
+
+        private string getLength()
+        {
+            if (_length < 1 || _length > 32000)
+            {
+                return "";
+            }
+            return "^LL" + _length.ToString();
         }
     }
 }
