@@ -7,6 +7,6 @@ namespace ZplLabels.ZPL
 {
     public enum PrintMode
     {
-        continous, cut, peelOff
+        tearOff, cut, peelOff
     }
 }

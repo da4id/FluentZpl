@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using ZplLabels.Common.Extensions;
+using System.Linq;
 
 namespace ZplLabels
 {
@@ -19,9 +20,16 @@ namespace ZplLabels
     {
         private const int Port = 9100;  //for ZEBRA PRINTERs
 
-        private const int TimeOut = 30; 
- 
+        private const int TimeOut = 30;
 
+        public string Print(string scriptStr, string printerName)
+        {
+            IPHostEntry ipHostInfo = Dns.GetHostEntry(printerName);
+            IPAddress ipAddress = ipHostInfo.AddressList
+                .FirstOrDefault(a => a.AddressFamily == AddressFamily.InterNetwork);
+
+            return Print(scriptStr, ipAddress);
+        }
  
         public string Print(string scriptStr, IPAddress ipAddress)
 		{  

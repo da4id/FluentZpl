@@ -26,9 +26,28 @@ namespace ZplLabels.ZPL
             return this;
         }
 
+        /// <summary>
+        /// Set Barcode position in pixel
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public LabelBarcodeGenerator At(int x, int y)
         { 
             _position = new LabelPosition(x, y);
+            return this;
+        }
+
+        /// <summary>
+        /// Set Barcode Position in milimeter
+        /// </summary>
+        /// <param name="dpiHelper"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public LabelBarcodeGenerator At(ZplLabels.Utilities.DPIHelper dpiHelper, double x, double y)
+        {
+            _position = new LabelPosition(dpiHelper.mmToPx(x), dpiHelper.mmToPx(y));
             return this;
         }
 

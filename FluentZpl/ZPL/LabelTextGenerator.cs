@@ -7,10 +7,28 @@ namespace ZplLabels.ZPL
         private FontDefinition _font;
         private bool _underline;
 
-
+        /// <summary>
+        /// Set Textposition in Pixel
+        /// </summary>
+        /// <param name="fromLeft"></param>
+        /// <param name="fromTop"></param>
+        /// <returns></returns>
         public LabelTextGenerator At(int fromLeft, int fromTop)
         {
             _position = new LabelPosition(fromLeft, fromTop);
+            return this;
+        }
+
+        /// <summary>
+        /// Set Textposition in milimeter
+        /// </summary>
+        /// <param name="dpiHelper"></param>
+        /// <param name="fromLeft"></param>
+        /// <param name="fromTop"></param>
+        /// <returns></returns>
+        public LabelTextGenerator At(ZplLabels.Utilities.DPIHelper dpiHelper, double fromLeft, double fromTop)
+        {
+            _position = new LabelPosition(dpiHelper.mmToPx( fromLeft), dpiHelper.mmToPx(fromTop));
             return this;
         }
 
