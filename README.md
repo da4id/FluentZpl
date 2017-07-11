@@ -28,6 +28,10 @@ If you want to provide your Labelpositions in milimeter instead of Pixel you can
 <pre>label.customZPLCommand("^FO100,100^ADN,80^FDCustomZPL^FS")</pre>
 Adds the Text CustomZPL to your Label. This function is useful to add your Company Logo as ZPL Code
 
+<h2>Darkness</h2>
+Set the Darkness of printermedia
+<pre>label.Darkness(26.5)</pre>
+
 <h2>Set Printer Mode</h2>
 Most printers have special functions like cutter or Peel Off unit. It is possible to control these units through ZPL
 <pre>label.Mode(PrintMode.cut)</pre>
