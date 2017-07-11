@@ -1,4 +1,6 @@
-﻿namespace ZplLabels.ZPL
+﻿using System;
+
+namespace ZplLabels.ZPL
 {
     public class ZplLabel
     {
@@ -8,6 +10,7 @@
         private int _homeY;
         private int _customCutOffset;
         private string _customZPL = "";
+        private double _darkness = 20;
         private PrintMode _mode = PrintMode.tearOff;
 
         public ZplLabel()
@@ -35,7 +38,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            return getHeader() + getHome() + _customZPL + _script + getFooter();
+            return getHeader() + getDarkness() + getHome() + _customZPL + _script + getFooter();
         }
 
         private string getHome()
@@ -106,6 +109,22 @@
             _mode = mode;
             return this;
         }
+
+
+        public ZplLabel Darkness(double darkness)
+        {
+            if (darkness > 30)
+            {
+                darkness = 30;
+            }
+            else if (darkness < 0)
+            {
+                darkness = 0;
+            }
+            _darkness = darkness;
+            return this;
+        }
+
         /// <summary>
         /// Insert Custom ZPL Code inside Label
         /// </summary>
@@ -139,6 +158,11 @@
             }
 
             return "^XA" + mode + "~TA" + _customCutOffset.ToString("000") + "\r\n";
+        }
+
+        private string getDarkness()
+        {
+            return "~SD"+ Math.Round(_darkness,1).ToString("00.0");
         }
     }
 }
