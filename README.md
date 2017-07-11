@@ -57,7 +57,7 @@ The "ToString()" method returns the ZPL Code as String
 
 <h2>Networkprinter</h2>
 <pre>
-var result = (new PrinterConnection()).Print(labelZPLContent, printername);
+var result = (new PrinterConnection()).Print(zplCode, printername);
 if (result != "OK")
 {
     logger.Error(result);
