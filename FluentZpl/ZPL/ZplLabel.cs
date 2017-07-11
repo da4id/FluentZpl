@@ -10,7 +10,7 @@ namespace ZplLabels.ZPL
         private int _homeY;
         private int _customCutOffset;
         private string _customZPL = "";
-        private double _darkness = 20;
+        private double? _darkness = null;
         private PrintMode _mode = PrintMode.tearOff;
 
         public ZplLabel()
@@ -162,7 +162,12 @@ namespace ZplLabels.ZPL
 
         private string getDarkness()
         {
-            return "~SD"+ Math.Round(_darkness,1).ToString("00.0");
+            if (_darkness == null)
+            {
+                return "";
+            }
+
+            return "~SD"+ Math.Round((double)_darkness,1).ToString("00.0");
         }
     }
 }
