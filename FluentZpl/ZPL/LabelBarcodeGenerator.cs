@@ -13,6 +13,7 @@ namespace ZplLabels.ZPL
         private int _height;
         private int _totalDots;
         private bool _barcodeTextLabel = false;
+        private bool _upperASCIIChar = false;
 
         public   LabelBarcodeGenerator SetBarcodeType(BarcodeType type)
         {
@@ -71,6 +72,10 @@ namespace ZplLabels.ZPL
         }
         public LabelBarcodeGenerator WithData(string value)
         {
+            if(value.Contains("ä") || value.Contains("ö") || value.Contains("ü") || value.Contains("Ö") || value.Contains("Ä") || value.Contains("Ü"))
+            {
+                _upperASCIIChar = true; 
+            }
             _data = new FieldData(value);
             return this;
         }
@@ -147,6 +152,10 @@ namespace ZplLabels.ZPL
 
         private string paramList()
         {
+            if (_upperASCIIChar == true)
+            {
+                return _orientation.Value + "," + _height + ",200,N,N,6\r\n";
+            }
             return _orientation.Value + "," + _height + ",200,N,N,3\r\n";
         }
     }
