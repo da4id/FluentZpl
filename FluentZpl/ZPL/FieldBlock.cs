@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace ZplLabels.ZPL
+﻿namespace ZplLabels.ZPL
 {
-    public class FieldBlock 
+    public class FieldBlock
     {
         private readonly int _lines;
         private readonly FieldJustification _justification;

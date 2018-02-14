@@ -56,6 +56,7 @@ namespace ZplLabels.ZPL
             _underline = true;
             return this;
         }
+
         public override string ToString()
         {
             if (_position == null) throw new ApplicationException("Field position must be set for text generator");
