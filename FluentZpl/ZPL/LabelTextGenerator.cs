@@ -32,6 +32,32 @@ namespace ZplLabels.ZPL
             return this;
         }
 
+        /// <summary>
+        /// Set Textposition in Pixel
+        /// </summary>
+        /// <param name="fromLeft"></param>
+        /// <param name="fromTop"></param>
+        /// <returns></returns>
+        public LabelTextGenerator At(int fromLeft, int fromTop, LabelPosition.LabelAlignemnet alignment)
+        {
+            _position = new LabelPosition(fromLeft, fromTop,alignment);
+            return this;
+        }
+
+        /// <summary>
+        /// Set Textposition in milimeter
+        /// </summary>
+        /// <param name="dpiHelper"></param>
+        /// <param name="fromLeft"></param>
+        /// <param name="fromTop"></param>
+        /// <returns></returns>
+        public LabelTextGenerator At(ZplLabels.Utilities.DPIHelper dpiHelper, double fromLeft, double fromTop,
+            LabelPosition.LabelAlignemnet alignment)
+        {
+            _position = new LabelPosition(dpiHelper.mmToPx(fromLeft), dpiHelper.mmToPx(fromTop),alignment);
+            return this;
+        }
+
         public LabelTextGenerator InBlock(int width, int lines, FieldJustification justification)
         {
             _block = new FieldBlock(width, lines, justification);

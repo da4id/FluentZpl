@@ -36,6 +36,32 @@
             return this;
         }
 
+        /// <summary>
+        /// Set Graphic Box position in pixel
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public GraphicBoxGenerator At(int x, int y, LabelPosition.LabelAlignemnet alignment)
+        {
+            _position = new LabelPosition(x, y,alignment);
+            return this;
+        }
+
+        /// <summary>
+        /// Set Graphic Box position in milimeter
+        /// </summary>
+        /// <param name="dpiHelper"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public GraphicBoxGenerator At(ZplLabels.Utilities.DPIHelper dpiHelper, double x, double y, 
+            LabelPosition.LabelAlignemnet alignment)
+        {
+            _position = new LabelPosition(dpiHelper.mmToPx(x), dpiHelper.mmToPx(y),alignment);
+            return this;
+        }
+
         public GraphicBoxGenerator HorizontalLine(int width, int lineThickness)
         {
             return this.Rectangle(width, 1, lineThickness);
