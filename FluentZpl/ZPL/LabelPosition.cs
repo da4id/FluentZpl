@@ -30,9 +30,9 @@ namespace ZplLabels.ZPL
         {
             if (Alignment == LabelAlignemnet.right)
             {
-                return string.Format("^FO{0},{1}", X, Y);
+                return string.Format("^FO{0},{1},1", X, Y);
             }
-            return string.Format("^FO{0},{1},1", X, Y);
+            return string.Format("^FO{0},{1}", X, Y);
         }
 
         public object Clone()
