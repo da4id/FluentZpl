@@ -201,6 +201,14 @@ namespace ZplLabels.ZPL
 
         private string getLabelOffset()
         {
+            if(_offsetY > 120)
+            {
+                _offsetY = 120;
+            }
+            else if(_offsetY < -120)
+            {
+                _offsetY = -120;
+            }
             return "^LT"+_offsetY+"^LS"+_offsetX;
         }
 
