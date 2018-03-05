@@ -91,8 +91,8 @@ namespace ZplLabels.ZPL
         /// <summary>
         /// Sets Label Offset
         /// </summary>
-        /// <param name="xOffset"></param>
-        /// <param name="yOffset"></param>
+        /// <param name="xOffset">x Offset in dots</param>
+        /// <param name="yOffset">y Offset in dot rows</param>
         /// <returns></returns>
         public ZplLabel LabelOffset(int xOffset, int yOffset)
         {

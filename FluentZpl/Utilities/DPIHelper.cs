@@ -51,5 +51,16 @@ namespace ZplLabels.Utilities
         {
             return px / dpmm;
         }
+
+        /// <summary>
+        /// converts dots to dotrows 
+        /// some zpl commands require dotrows as parameter
+        /// </summary>
+        /// <param name="dots"></param>
+        /// <returns></returns>
+        public int dotsToDotRows(int dots)
+        {
+            return (int)Math.Round(dots / 2.0);
+        }
     }
 }
